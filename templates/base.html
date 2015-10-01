@@ -10,6 +10,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {% if FORCE_HTTPS %}
+        <script>
+            // var host = "{{ SITEURL }}".replace("/.*?:\/\//", "");
+            if (window.location.protocol != "https:")
+                window.location.protocol = "https";
+        </script>
+    {% endif %}
+
     {% if 'liquid_tags.notebook' in PLUGINS %}
         {% include 'includes/liquid_tags_nb_header.html' %}
     {% endif %}
